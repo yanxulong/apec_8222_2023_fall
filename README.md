@@ -16,6 +16,8 @@ Course readings: <https://drive.google.com/open?id=1ocsMTAfo0kkYDLvn2CG6yecLanRt
 
 <https://drive.google.com/open?id=1ocsMTAfo0kkYDLvn2CG6yecLanRtO3fs&usp=drive_fs>
 
+<https://drive.google.com/drive/u/1/folders/1ocsMTAfo0kkYDLvn2CG6yecLanRtO3fs>
+
 # Fall 2023 Syllabus
 
 ## Instructor:
@@ -109,7 +111,7 @@ Becoming skilled in Big Data is partly about mastering the tools and it will be 
 I will take more or less time on the topics as needed and will react to student feedback and requests.
 
 |                               |                                                           |                                                                                                                    |                                               |
-|------------------|------------------|--------------------|------------------|
+|------------------|------------------|-------------------|------------------|
 | **Date**                      | **Topic**                                                 | **Readings**                                                                                                       | **Assignments**                               |
 | 24-Oct                        | Introduction & Course Overview                            | None                                                                                                               | Assignment 1 Assigned (very short assignment) |
 | 26-Oct                        | Expanding your toolset, Introduction to Python \[part 1\] | Turrell, "Preliminaries" section: https://aeturrell.github.io/coding-for-economists/code-preliminaries.html        |                                               |
