@@ -1,6 +1,12 @@
 # **APEC 8222: Big Data Methods in Economics**
 
-**Fall 2023 Syllabus**
+## Resources
+
+Class shared google drive: <https://drive.google.com/drive/u/1/folders/0ADfBSFdysX0gUk9PVA>
+
+Lecture slides: <https://drive.google.com/drive/u/1/folders/1x6hVJA286TJ4v4hak9f8Myf3Q5bVWL00>
+
+# Fall 2023 Syllabus
 
 ## Instructor:
 
@@ -93,7 +99,7 @@ Becoming skilled in Big Data is partly about mastering the tools and it will be 
 I will take more or less time on the topics as needed and will react to student feedback and requests.
 
 |                               |                                                           |                                                                                                                    |                                               |
-|-----------------|-----------------|-----------------------|-----------------|
+|-----------------|-----------------|---------------------|-----------------|
 | **Date**                      | **Topic**                                                 | **Readings**                                                                                                       | **Assignments**                               |
 | 24-Oct                        | Introduction & Course Overview                            | None                                                                                                               | Assignment 1 Assigned (very short assignment) |
 | 26-Oct                        | Expanding your toolset, Introduction to Python \[part 1\] | Turrell, "Preliminaries" section: https://aeturrell.github.io/coding-for-economists/code-preliminaries.html        |                                               |
@@ -117,19 +123,17 @@ I will take more or less time on the topics as needed and will react to student 
 
 1.  [Class attendance is expected.]{.underline}  You will not be graded on attendance, but we expect you to come: any material covered in class is fair game on assignments and exams. Equally importantly, the questions you and your peers ask and the comments you make during class will make for a better experience for everyone, so please make every effort to attend. That said, unexpected conflicts come up for all of us, so any lecture notes and slides used during class will be available online.
 
-```{=html}
 <!-- -->
-```
+
 2.  [You may discuss and work on assignments with other students, but you must write up and turn in your own assignment.]{.underline}You all have different strengths and can learn from one another by working together, so we encourage you to do so. The point of this policy is so that you can learn more, not less, so please don't abuse the privilege and let someone else do the work and you simply copy their answer. That won't help you learn the material.
 
-```{=html}
 <!-- -->
-```
+
 3.  [Do not violate the Student Conduct Code.]{.underline} The assignments you turn in and your answers on exams should reflect your own work. Simply copying someone else's work, or otherwise violating the Student Conduct Code
 
     (<http://regents.umn.edu/sites/default/files/policies/Student_Conduct_Code.pdf>) may result in a failing grade and/or additional University action. That may sound scary, and it's supposed to be, but know that if you turn in work that is your own, you have nothing to worry about. If you have any questions or concerns about this policy, please don't hesitate to ask.
 
-4.   [Treat your classmates with respect.]{.underline} Everyone in the class is here to learn and has an equal right to be treated with respect. This means many things, but in summary, We will not tolerate any form of discrimination or sexual harassment. The University has official policies that you can read if you aren't sure what constitutes either of those things, but your common sense will take you a long way.
+4.  [Treat your classmates with respect.]{.underline} Everyone in the class is here to learn and has an equal right to be treated with respect. This means many things, but in summary, We will not tolerate any form of discrimination or sexual harassment. The University has official policies that you can read if you aren't sure what constitutes either of those things, but your common sense will take you a long way.
 
 **Other notes:**
 
