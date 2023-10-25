@@ -2,21 +2,17 @@
 
 ## Resources
 
+Jrea
+
 Class shared google drive: <https://drive.google.com/drive/u/1/folders/0ADfBSFdysX0gUk9PVA>
 
 Lecture slides: <https://drive.google.com/drive/u/1/folders/1x6hVJA286TJ4v4hak9f8Myf3Q5bVWL00>
 
-Turrell textbook:
+Course readings: <https://drive.google.com/drive/u/1/folders/1ocsMTAfo0kkYDLvn2CG6yecLanRtO3fs>
 
-Course readings: <https://drive.google.com/open?id=1ocsMTAfo0kkYDLvn2CG6yecLanRtO3fs&usp=drive_fs>
+Course data: <https://drive.google.com/drive/u/1/folders/1lcGSH0yQZ9IJ-sdNWbQQTGqU34oFQ4cd>
 
-<https://drive.google.com/drive/folders/1x6hVJA286TJ4v4hak9f8Myf3Q5bVWL00?usp=drive_link>
-
-<https://drive.google.com/drive/folders/1ocsMTAfo0kkYDLvn2CG6yecLanRtO3fs?usp=drive_link>
-
-<https://drive.google.com/open?id=1ocsMTAfo0kkYDLvn2CG6yecLanRtO3fs&usp=drive_fs>
-
-<https://drive.google.com/drive/u/1/folders/1ocsMTAfo0kkYDLvn2CG6yecLanRtO3fs>
+Turrell textbook: <https://aeturrell.github.io/coding-for-economists/intro.html>
 
 # Fall 2023 Syllabus
 
