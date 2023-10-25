@@ -2,8 +2,6 @@
 
 ## Resources
 
-Jrea
-
 Class shared google drive: <https://drive.google.com/drive/u/1/folders/0ADfBSFdysX0gUk9PVA>
 
 Lecture slides: <https://drive.google.com/drive/u/1/folders/1x6hVJA286TJ4v4hak9f8Myf3Q5bVWL00>
