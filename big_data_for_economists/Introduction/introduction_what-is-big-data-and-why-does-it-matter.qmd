@@ -1,0 +1,401 @@
+---
+title: "What is Big Data and Why Does it Matter"
+author: "Justin Johnson"
+date: "2023-10-24"
+format: 
+    html: 
+        toc: true
+        toc-depth: 2
+        number-sections: false
+        mathjax: local
+        highlight: tango
+    pdf:
+        toc: true
+        number-sections: true
+        colorlinks: true
+---
+
+# Agenda
+
+-   Introductions (you all know each other but I don't yet!)
+    -   Name, program, how far along in the program, and the SINGLE BEST thing you learned in 8221.
+-   Discuss syllabus.
+-   What is big data?
+-   Example research topics that use big data
+-   How does this connect to econometrics?
+-   Big data examples from my research
+
+# A few notes on the syllabus
+
+## Computers and software
+
+-   Necessary to succeed: mastering software and code.
+    -   Applied Economics itself is shifting in this direction.
+        -   More focus on code expertise.
+        -   Distinguishes us (in a very positive way) from traditional Econ programs.
+-   In this course, we will use both R and Python
+    -   R is dominant in applied econometrics (and thus is the basis of our department's coding approach)
+    -   Other disciplines (including machine learning) use R much less
+    -   In your career, you will likely have to learn new coding languages.
+        -   Let's become bilingual!
+-   I will lead the Python-specific component of the course
+    -   Will walk you through installation, language basics etc., and then use it apply machine-learning models to big data
+
+## Readings (FREE!)
+
+![Interactive Readings](images/lec1_image4.png){width=70% #fig-1_4}
+![Interactive Readings](images/lec1_image5.png){width=70% #fig-1_5}
+
+
+
+## Office hours
+
+- Justin: Tuesdays 1:00-2:00 P.M. in person (classroom or office 337F). If virtual is needed, go to <https://umn.zoom.us/my/jajohns>
+
+
+## Computers in class
+
+For Python, we will work through installation of the programming language and several supporting tools. This course strongly recommends that you bring your own laptop because having a well-setup laptop will serve you well into your academic career. If this is not possible, please contact the instructors within the first week of class and we can discuss alternatives.  It is possible to use a PC, Mac or Linux for this course, though all examples will be given on a PC.  Becoming skilled in Big Data is partly about mastering the tools and it will be your responsibility to come to class with your computer setup in a way for you to succeed. We will discuss any setup steps necessary in the lecture before it is to be used.
+
+# What is big data?
+
+## Big data means many things to different groups
+
+- Standard definition: Data sets that are so large or complex that traditional data processing applications are inadequate
+  - Streams of data (e.g., video collected by a self-driving car)
+  - Massive consumer data (they are watching you)
+  - Remotely sensed data (satellites or drones taking pictures of the earth)
+  - Traditional data, but just really big.
+
+- Many related subfields also constitute “what is” big data.
+  - Machine learning (core to this course)
+  - Artificial Intelligence (AI)
+  - Technological advancement in computer science and hardware
+  - Econometrics exactly as we’ve done before, but just with bigger tables
+
+## Why should economists care about “big data”?
+
+
+1. Too many observations leads to 1000s of years of runtime.
+2. OLS: requires inverting a matrix. How do you invert 𝑋^′ 𝑋^(−1) when 𝑛 is super huge? What if it’s so big it can’t even fit in your computers’ memory? Big data has solutions to this problem.
+3. Big data enables many new approaches, functional forms, and greater ability to predict.
+  - But what’s the risk? We’ll return to this.
+4. Lots of new (and big) datasets aren’t well structured. What is 𝑥_𝑖𝑘 for a tweet?
+5. This is where the field is going.
+
+
+# Types of big data and new domains
+
+## Voice  Analysis
+![Input: time-series of amplitude of different pitches](images/lec1_image7.png){width=70% #fig-1_7}
+
+---
+
+**Text data**
+MEANING. Via e.g., Natural Language Processing (NLP) methods
+
+---
+
+## Image Analysis
+![Image Analysis](images/lec1_image8.png){width=70% #fig-1_8}
+
+![Categorization](images/lec1_image12.png){width=70% #fig-1_12}
+
+![Even image generation](images/lec1_image9.jpeg){width=30% #fig-1_9}
+![](images/lec1_image10.jpeg){width=30% #fig-1_10}
+![](images/lec1_image11.jpeg){width=30% #fig-1_11}
+
+## Sentiment Analysis
+
+![](images/lec1_sentiment.png){width=70% #fig-snet}
+
+## Big data from remote sensing (satellites)
+
+
+::: {.panel-tabset} 
+
+### How
+- Creates terabytes of information per day
+  - Can assess economic factor like poverty
+  - Or environmental factors like freshwater availability
+
+- Data types:
+  - Raster data (matrices of spatial values)
+  - Vector data (link databases of survey data to georeferenced household locations)
+
+
+### Maps: Just a 2-dim matrix of values
+![](images/lec1_image15.png){width=50% #fig-sec1_15}
+![](images/lec1_image16.png){width=50% #fig-sec1_16}
+:::
+
+## Important example: Land-use, Land Cover (LULC) maps-National Land Cover Database (NLCD)
+
+::: {.panel-tabset} 
+
+### Without Zoom-in
+
+![](images/lec1_nlcd_zoom1.png){width=100% #fig-sec1_17}
+
+### Let's Zoom-in
+
+![](images/lec1_nlcd_zoom2.png){width=100% #fig-sec1_18}
+
+### Let's Zoom-in again
+
+![Why do I care so much about LULC maps? Primary input to environmental economic models.](images/lec1_nlcd_zoom3.png){width=100% #fig-sec1_19}
+
+:::
+
+## LULC zoomed super-far in
+
+![Literally just a 2-dimensional array (matrix) of integers](images/lec1_lulc_zoomed_super.png){width=100% #fig-sec1_20}
+
+# Example research topics that use big spatial data
+
+## Example: Conservation prioritization using basic raster-math
+
+![NMB (higher values indicate higher conservation priority)](images/lec1_image25.png){width=100% #fig-sec1_25}
+
+$$
+n m b_{x y}^f=\frac{p_{x y}^f}{\Delta \pi\left(h_{x y}^b\right)-\Delta \pi\left(h_{x y}^c\right)}
+$$
+
+- Net marginal benefit of conservation per profit forgone
+
+- Optimal price to pay for protection on the xth, yth grid-cell
+
+- Forgone profit from farming
+
+## Example: Spatial regression to predict land-use change
+
+![](images/lec1_image23.png){width=100% #fig-sec1_23}
+
+- Suppose you want to predict where agricultural expansion will happen
+
+- Could run regressions on biophysical parameters
+
+- But maybe also gridded socioeconomic data
+
+## Example: Given different scenarios of land-use change, how will the economy be affected (via ecosystem services)?
+
+![](images/lec1_image27.png){width=100% #fig-sec1_27}
+
+- For more ecosystem services: https://naturalcapitalproject.stanford.edu/
+
+# How does this connect to econometrics?
+
+## Lots of data, same old econometrics
+
+When n is very large (or both n and k are)
+
+![](images/lec1_lotsofdata.png){width=100% #fig-sec1_lotsof}
+
+
+## New prediction approaches
+
+![](images/lec1_newpredict.png){width=100% #fig-sec1_newpredict}
+
+## So we’ve got better models and huge data. What’s the risk?
+
+- Requires rethinking what it means to be ‘good’ at prediction.
+  - In econometrics, we often measure our prediction quality using in-sample analysis. For example, with R2.
+  - Normally we cheer when our p-values are tiny.
+  - With big data, our p-values are (almost) ALWAYS tiny.
+  - Is this a good thing?
+- In the Python component of the course, we’re going to introduce a new metric of prediction quality.
+  - **Out-of-sample** prediction quality through cross-validation.
+  - Has been around forever of course, but big data greatly improves opportunities our ability to do cross-validation.
+
+## Big Data improves opportunities for cross-validation (We’ll learn this soon)
+
+![](images/lec1_image32.png){width=100% #fig-sec1_32}
+
+## Model complexity
+
+- With big data, you can make your model very, very complex
+- What is the risk of this?
+  - Prediction error out of sample gets worse
+
+![](images/lec1_image33.png){width=100% #fig-sec1_33}
+
+## Another term: overfitting vs underfitting
+
+- Overfitting a model: making the model overly complex to that accuracy falls on the test data.
+
+- We will talk about ways to methodologically hit the “sweet spot” of model complexity.
+
+![](images/lec1_image34.png){width=100% #fig-sec1_34}
+
+## Criticism of Big Data
+
+- Predicting the world with big data means we’re focused (obsessed?) by how the world was in the past (or at best, present)
+  - Embeds racism, sexism, etc.
+  - Enables algorithmic discrimination
+- Big data: not actually new -- just bigger.
+
+# Big data examples from my research
+
+## Research area 1: InVEST and The Natural Capital Project
+
+- Partnership of WWF, The Nature Conservancy, Stanford University, University of Minnesota and Chinese Academy of sciences
+
+![](images/lec1_image36.png){width=70% #fig-sec1_36}
+
+- InVEST is an open-source software tool to estimate 20+ ecosystem services
+
+![](images/lec1_image35.png){width=70% #fig-sec1_35}
+
+- Spatially-explicit, high-resolution, processed-based production functions, global extent
+
+### InVEST Carbon Model is essentially a “lookup table”
+
+![](images/lec1_image38.png){width=70% #fig-sec1_38}
+
+Table values are heavily dependent on “Ecofloristic Zone”
+
+![](images/lec1_image39.png){width=70% #fig-sec1_39}
+
+## Research area 2: Spatial Regression
+
+- Algorithms used: Elastic Net and LASSO-LARS-CV
+- Dependent variable was 30-meter global aboveground biomass (~3 billion observations)
+- Independent variables included 40+ layers of soil, topographic, climate, socioeconomic and other variables
+
+![](images/lec1_image40.png){width=70% #fig-sec1_40}
+
+### Definition of adjacency or “neighborhood effect”
+
+- Gridded data preserve spatial structure
+  - Nearby cells are highly correlated
+  - The actual pattern may be a good predictor
+
+![A. Example 1-dimensional adjacency relationships](images/lec1_1dadjacency.png){width=70% #fig-1dadj}
+
+- Can use 2-dimensional convolutions to express this structure
+  - Identified different shapes of the adjacency relationship to predict carbon storage
+
+![B. Expression in 2- and 3-dimensions](images/lec1_image41.png){width=70% #fig-sec1_41}
+
+### LASSO-LARS-CV
+
+$$
+\begin{aligned}
+& \min \left(\Sigma_i\left(\left(y_i-\widehat{y}_i\right)^2\right)\right. \\
+& \text { subject to } \Sigma_j\left|\beta_j\right| \leq s
+\end{aligned}
+$$
+
+- LASSO (least absolute shrinkage and selection operator) is like ordinary leas squares but solved subject to a constraint on the absolute size of the coefficients
+  - Can tune the model via choosing s (or alpha)
+  ![](images/lec1_image43.png){width=70% #fig-sec1_43}
+  - In our approach, we solved for the optimal s via a least-angle regression selection approach (with out-of-sample cross validation) as in top figure
+  - Used this method to find optimal set of parameters (bottom figure)
+  ![](images/lec1_image44.png){width=70% #fig-sec1_44}
+
+### Results
+![](images/lec1_image45.png){width=70% #fig-sec1_45}
+
+- Greatly outperforms the look-up table approach (IPCC method)
+- Edge effects definitely exist
+  - But still working to identify exact structure
+
+## Research area 3: Connecting general equilibrium models to ecosystem service models - GTAP-InVEST
+
+### Growing consensus that sustainability requires considering the entire bio-economic system
+![](images/lec1_gtapinvest.png){width=70% #fig-gtapinvest}
+
+### Two domains, types of models
+![](images/lec1_twodomain.png){width=100% #fig-twodomain}
+
+### We created a new model, GTAP-InVEST, that enables this by linking an economic model with an ecosystem services model 
+![](images/lec1_gtapinvest2.png){width=70% #fig-gtapinvest2}
+
+### Three big questions important for Earth-Economy modeling to answer.
+
+1. How much does nature benefit the economy? 
+  - Must be in measurable terms. Must account for whole-economy impacts.
+2. Who loses (or wins) when nature is depleted? 
+  - Must assess fairness. Must consider economic activity hurt by conservation.
+3. How can policy protect nature’s value and equity?
+  - What can we do?
+
+### Two domains, two different types of data
+
+![](images/lec1_twodomain_data.png){width=100% #fig-twodomain_data}
+
+---
+
+**This is newly possible!**
+We are now able to calculate high-resolution, global ecosystem services (Chaplin-Kramer et al. 2019, Science).
+
+![](images/lec1_image55.png){width=70% #fig-1_55}
+![](images/lec1_image56.png){width=70% #fig-1_56}
+
+---
+
+**GTAP-InVEST includes five (currently) global ecosystem services**
+
+
+| | **Pollination** | **Coastal protection**  | **Water yield** | **Carbon storage** | **Marine fisheries** |
+|:------------------:|:---------------:|:-----------------------:|:---------------:|:------------------:|:-------------------:|
+|                    | ↓               | ↓                        | ↓               | ↓                  | ↓                   |
+|**Inputs to GTAP**                     | Lowered agricultural productivity | Reduced land-capital, productivity losses | Reduced water input to irrigated agriculture | Reduced extraction efficiency of forestry sector; Social cost of carbon | Lowered fisheries productivity |
+
+### Wild pollinator ecosystem service provision
+
+Model estimates changes in pollinators in response to land use change brought about by policy scenarios. This spatially explicit input is used to estimate region-specific impacts. 
+
+![](images/lec1_wildpollination.png){width=100% #fig-wildpollination}
+
+![](images/lec1_wildpollination_details.png){width=100% #fig-wildpollination_details}
+
+### Carbon storage and timber ecosystem service provision
+
+![](images/lec1_carbonstorage.png){width=100% #fig-carbonstorage}
+
+### Marine fisheries ecosystem service provision
+
+![](images/lec1_marinefish.png){width=100% #fig-marinefish}
+
+### Coastal protection ecosystem service provision
+![](images/lec1_coastalprotect.png){width=100% #fig-cosatlprotect}
+
+### Water yield ecosystem service provision
+![](images/lec1_wateryield.png){width=100% #fig-wateryield}
+
+## Research Area 4: Predicting Land-use Change
+
+Missing Link between GTAP-AEZ results and ecosystem service models: downscaling
+
+- Created new model extends this downscaling:
+  - SEALS: Spatial economic allocation landscape simulator (Suh et al. 2020)
+- Key advances:
+  - Empirically calibrated with time-series data
+  - Can incorporate grid-cell level interventions (Riparian buffers)
+
+![](images/lec1_seals.png){width=100% #fig-seals}
+
+---
+
+![](images/lec1_image74.png){width=45% #fig-1_74}
+![](images/lec1_image75.png){width=45% #fig-1_75}
+
+---
+
+**Why is high-resolution important?**
+
+The exact, high-resolution location of where the agricultural expansion happens determines how much environmental impact occurs
+
+![](images/lec1_whyhighresolution.png){width=100% #fig-whyhighresolution}
+
+---
+
+**Why is multi-scale modeling important?**
+
+The exact, high-resolution location of where the agricultural expansion happens determines how much environmental impact occurs
+
+![Zoom-in GLUS](images/lec1_image83.png){width=100% #fig-whyhighresolution}
+
+
+

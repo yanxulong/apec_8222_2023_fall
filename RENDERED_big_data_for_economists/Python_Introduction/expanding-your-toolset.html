@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Justin Johnson">
+<meta name="dcterms.date" content="2023-10-24">
+
+<title>Big Data for Economists - Expanding Your Toolset</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../Python_Introduction/python_for_big_spatial_data.html" rel="next">
+<link href="../Introduction/introduction_what-is-big-data-and-why-does-it-matter.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Python_Introduction/expanding-your-toolset.html">Python</a></li><li class="breadcrumb-item"><a href="../Python_Introduction/expanding-your-toolset.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Expanding Your Toolset</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Big Data for Economists</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Introduction/introduction_what-is-big-data-and-why-does-it-matter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is Big Data and Why Does it Matter</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Python</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Python_Introduction/expanding-your-toolset.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Expanding Your Toolset</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Python_Introduction/python_for_big_spatial_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Python for Big, Spatial Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Python_Introduction/jupyter_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Jupyter Intro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Python_Introduction/python_assignment_0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Exercise 1</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Python_Introduction/python_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Python Basics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Python_Introduction/numpy_arrays.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Numpy Arrays</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Python_Introduction/pandas_tables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Pandas Tables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Python_Introduction/gdal_rasters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">GDAL Rasters</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Python_Introduction/python_assignment_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Exercise 2</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Machine Learning</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Machine_Learning/introduction_big_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Diving into Machine Learning on Big Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Machine_Learning/linear_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Linear Regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Machine_Learning/support_vector_machines.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Support Vector Machines</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Machine_Learning/regularization_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regularization Intro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Machine_Learning/regularization_with_lasso.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Regularization with Lasso</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Machine_Learning/neural_networks_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Neural networks</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Machine_Learning/nn_multilayer_perceptron.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Neural Nets Code</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Spatial Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Spatial_Analysis/spatial_data_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Python for Big, Spatial Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Spatial_Analysis/classification_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Last day of class!</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Spatial_Analysis/lulc_classification.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Classification of Land Cover</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Spatial_Analysis/python_assignment_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 2</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Appendices/hosting_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Hosting notes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Appendices/quarto_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Cross References</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#agenda" id="toc-agenda" class="nav-link active" data-scroll-target="#agenda">Agenda</a></li>
+  <li><a href="#the-need-for-an-expanded-toolset" id="toc-the-need-for-an-expanded-toolset" class="nav-link" data-scroll-target="#the-need-for-an-expanded-toolset">The need for an expanded toolset</a>
+  <ul class="collapse">
+  <li><a href="#overall-shift-in-the-academy-from-individual-geniuses-to-groups-of-people" id="toc-overall-shift-in-the-academy-from-individual-geniuses-to-groups-of-people" class="nav-link" data-scroll-target="#overall-shift-in-the-academy-from-individual-geniuses-to-groups-of-people">Overall shift in the academy from individual geniuses to groups of people</a></li>
+  <li><a href="#two-example-that-have-managed-this-complexity-well-software-companies." id="toc-two-example-that-have-managed-this-complexity-well-software-companies." class="nav-link" data-scroll-target="#two-example-that-have-managed-this-complexity-well-software-companies.">Two example that have managed this complexity well: software companies.</a></li>
+  </ul></li>
+  <li><a href="#tool-1-git-and-github" id="toc-tool-1-git-and-github" class="nav-link" data-scroll-target="#tool-1-git-and-github">Tool 1: Git and Github</a></li>
+  <li><a href="#tool-2-vs-code" id="toc-tool-2-vs-code" class="nav-link" data-scroll-target="#tool-2-vs-code">Tool 2: VS Code</a>
+  <ul class="collapse">
+  <li><a href="#the-command-palate" id="toc-the-command-palate" class="nav-link" data-scroll-target="#the-command-palate">The Command Palate</a></li>
+  <li><a href="#connect-vs-code-to-github" id="toc-connect-vs-code-to-github" class="nav-link" data-scroll-target="#connect-vs-code-to-github">Connect VS Code to Github</a></li>
+  <li><a href="#before-we-use-git-lets-talk-about-file-structure" id="toc-before-we-use-git-lets-talk-about-file-structure" class="nav-link" data-scroll-target="#before-we-use-git-lets-talk-about-file-structure">Before we use Git, let’s talk about file structure</a></li>
+  <li><a href="#clone-the-course-repository" id="toc-clone-the-course-repository" class="nav-link" data-scroll-target="#clone-the-course-repository">Clone the course repository</a></li>
+  </ul></li>
+  <li><a href="#tool-3-python" id="toc-tool-3-python" class="nav-link" data-scroll-target="#tool-3-python">Tool 3: Python</a>
+  <ul class="collapse">
+  <li><a href="#what-did-we-do-with-mamba" id="toc-what-did-we-do-with-mamba" class="nav-link" data-scroll-target="#what-did-we-do-with-mamba">What did we do with Mamba?</a></li>
+  <li><a href="#select-our-interpreter" id="toc-select-our-interpreter" class="nav-link" data-scroll-target="#select-our-interpreter">Select our interpreter</a></li>
+  <li><a href="#jupyter-notebooks" id="toc-jupyter-notebooks" class="nav-link" data-scroll-target="#jupyter-notebooks">Jupyter notebooks</a></li>
+  </ul></li>
+  <li><a href="#appendix-more-vs-code-settings" id="toc-appendix-more-vs-code-settings" class="nav-link" data-scroll-target="#appendix-more-vs-code-settings">Appendix: More VS Code Settings</a>
+  <ul class="collapse">
+  <li><a href="#about-vs-workspaces-and-folders" id="toc-about-vs-workspaces-and-folders" class="nav-link" data-scroll-target="#about-vs-workspaces-and-folders">About VS “Workspaces” and “Folders”</a></li>
+  <li><a href="#open-up-settings" id="toc-open-up-settings" class="nav-link" data-scroll-target="#open-up-settings">Open up settings</a></li>
+  <li><a href="#settings-i-like-to-play-with" id="toc-settings-i-like-to-play-with" class="nav-link" data-scroll-target="#settings-i-like-to-play-with">Settings I like to play with</a></li>
+  </ul></li>
+  <li><a href="#appendix-behind-the-scene-of-mamba-what-that-all-really-did" id="toc-appendix-behind-the-scene-of-mamba-what-that-all-really-did" class="nav-link" data-scroll-target="#appendix-behind-the-scene-of-mamba-what-that-all-really-did">Appendix: Behind the scene of Mamba: What that all really did</a>
+  <ul class="collapse">
+  <li><a href="#important-note-file-organization-matters" id="toc-important-note-file-organization-matters" class="nav-link" data-scroll-target="#important-note-file-organization-matters">Important note: File organization matters</a></li>
+  <li><a href="#cloud-integration" id="toc-cloud-integration" class="nav-link" data-scroll-target="#cloud-integration">Cloud integration</a></li>
+  <li><a href="#here-is-where-mamba-installed-everything" id="toc-here-is-where-mamba-installed-everything" class="nav-link" data-scroll-target="#here-is-where-mamba-installed-everything">Here is where Mamba installed everything</a></li>
+  <li><a href="#optional-path-step" id="toc-optional-path-step" class="nav-link" data-scroll-target="#optional-path-step">Optional <code>PATH</code> step</a></li>
+  </ul></li>
+  <li><a href="#appendix-more-details-about-git-and-version-control" id="toc-appendix-more-details-about-git-and-version-control" class="nav-link" data-scroll-target="#appendix-more-details-about-git-and-version-control">Appendix: More details about Git and Version Control</a>
+  <ul class="collapse">
+  <li><a href="#git-details" id="toc-git-details" class="nav-link" data-scroll-target="#git-details">Git Details</a></li>
+  <li><a href="#creating-new-repos" id="toc-creating-new-repos" class="nav-link" data-scroll-target="#creating-new-repos">Creating new repos</a></li>
+  <li><a href="#git-from-the-ground-up-using-the-command-line" id="toc-git-from-the-ground-up-using-the-command-line" class="nav-link" data-scroll-target="#git-from-the-ground-up-using-the-command-line">Git from the ground up (using the command line)</a></li>
+  <li><a href="#git-from-the-ground-up" id="toc-git-from-the-ground-up" class="nav-link" data-scroll-target="#git-from-the-ground-up">Git from the ground up</a></li>
+  <li><a href="#using-git-from-the-command-line" id="toc-using-git-from-the-command-line" class="nav-link" data-scroll-target="#using-git-from-the-command-line">Using Git from the command line</a></li>
+  <li><a href="#optional-version-control-graphical-user-interface-installation" id="toc-optional-version-control-graphical-user-interface-installation" class="nav-link" data-scroll-target="#optional-version-control-graphical-user-interface-installation">Optional: Version Control Graphical User Interface Installation</a></li>
+  <li><a href="#breakout-group-activity" id="toc-breakout-group-activity" class="nav-link" data-scroll-target="#breakout-group-activity">BREAKOUT GROUP ACTIVITY</a></li>
+  </ul></li>
+  <li><a href="#other-toolsapproaches" id="toc-other-toolsapproaches" class="nav-link" data-scroll-target="#other-toolsapproaches">Other tools/approaches</a></li>
+  <li><a href="#getting-python-with-anaconda" id="toc-getting-python-with-anaconda" class="nav-link" data-scroll-target="#getting-python-with-anaconda">Getting Python with Anaconda</a>
+  <ul class="collapse">
+  <li><a href="#setting-the-interpreter-with-pycharms" id="toc-setting-the-interpreter-with-pycharms" class="nav-link" data-scroll-target="#setting-the-interpreter-with-pycharms">Setting the interpreter with PyCharms</a></li>
+  <li><a href="#create-a-new-environment-using-conda" id="toc-create-a-new-environment-using-conda" class="nav-link" data-scroll-target="#create-a-new-environment-using-conda">Create a new environment using Conda</a></li>
+  <li><a href="#installing-packages" id="toc-installing-packages" class="nav-link" data-scroll-target="#installing-packages">Installing Packages</a></li>
+  <li><a href="#running-python-on-the-command-line" id="toc-running-python-on-the-command-line" class="nav-link" data-scroll-target="#running-python-on-the-command-line">Running Python on the command line</a></li>
+  </ul></li>
+  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a>
+  <ul class="collapse">
+  <li><a href="#spatial-data-viewer-installation" id="toc-spatial-data-viewer-installation" class="nav-link" data-scroll-target="#spatial-data-viewer-installation">Spatial Data Viewer Installation</a></li>
+  <li><a href="#colab" id="toc-colab" class="nav-link" data-scroll-target="#colab">Colab?</a></li>
+  <li><a href="#popularity-matters" id="toc-popularity-matters" class="nav-link" data-scroll-target="#popularity-matters">Popularity matters</a></li>
+  <li><a href="#the-original-tools-the-command-line" id="toc-the-original-tools-the-command-line" class="nav-link" data-scroll-target="#the-original-tools-the-command-line">The original tool(s): The Command Line</a></li>
+  </ul></li>
+  <li><a href="#in-class-exercise-1.1-python-on-the-command-line" id="toc-in-class-exercise-1.1-python-on-the-command-line" class="nav-link" data-scroll-target="#in-class-exercise-1.1-python-on-the-command-line">In Class Exercise 1.1: Python on the command line</a></li>
+  <li><a href="#basics-of-python" id="toc-basics-of-python" class="nav-link" data-scroll-target="#basics-of-python">Basics of Python</a>
+  <ul class="collapse">
+  <li><a href="#different-ways-of-using-python" id="toc-different-ways-of-using-python" class="nav-link" data-scroll-target="#different-ways-of-using-python">Different ways of using Python</a></li>
+  </ul></li>
+  <li><a href="#other-reseources-still-to-pull-in" id="toc-other-reseources-still-to-pull-in" class="nav-link" data-scroll-target="#other-reseources-still-to-pull-in">Other reseources still to pull in</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Expanding Your Toolset</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Justin Johnson </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 24, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div id="fig-2_1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/lec2_image1.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<section id="agenda" class="level1">
+<h1>Agenda</h1>
+<ul>
+<li>Introduce the need for an expanded toolset</li>
+<li>Discuss each of the tools installed in turn and discuss how/where it will be used in the rest of the course
+<ul>
+<li>Version Control: Git and GitHub</li>
+<li>Programming Language: Python</li>
+<li>IDE (Integrated Development Environment): VS Code</li>
+</ul></li>
+<li>Group activity to ensure everything is working</li>
+</ul>
+</section>
+<section id="the-need-for-an-expanded-toolset" class="level1">
+<h1>The need for an expanded toolset</h1>
+<section id="overall-shift-in-the-academy-from-individual-geniuses-to-groups-of-people" class="level2">
+<h2 class="anchored" data-anchor-id="overall-shift-in-the-academy-from-individual-geniuses-to-groups-of-people">Overall shift in the academy from individual geniuses to groups of people</h2>
+<ul>
+<li>Less evident in economics, but still evident.</li>
+<li>What’s the main challenge: groups of people are complex to manage.</li>
+<li>Writing a text document with many authors gets messy quick. With writing code it’s exponentially harder.</li>
+</ul>
+<p><img src="images/lec2_image2.png" id="fig-2_2" class="img-fluid" style="width:100.0%"></p>
+</section>
+<section id="two-example-that-have-managed-this-complexity-well-software-companies." class="level2">
+<h2 class="anchored" data-anchor-id="two-example-that-have-managed-this-complexity-well-software-companies.">Two example that have managed this complexity well: software companies.</h2>
+<ul>
+<li>In the last decade there has been an explosion in tools for teams of 1000+ to all write code to the same codebase.</li>
+<li>Example: Microsoft
+<ul>
+<li>A single code repository with 3.5M files being edited by 4000+ engineers</li>
+</ul></li>
+<li>Open-source example: Tensorflow
+<ul>
+<li>Machine-learning library with 1800+ git contributors</li>
+<li>Have created a massive public good.</li>
+</ul></li>
+</ul>
+<section id="example-of-a-repository-in-github-scikit-learn" class="level3">
+<h3 class="anchored" data-anchor-id="example-of-a-repository-in-github-scikit-learn">Example of a repository in GitHub: Scikit-learn</h3>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/cMnqOyMQ44Y" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</section>
+<section id="my-shining-beacon-of-hope-open-source-software" class="level3">
+<h3 class="anchored" data-anchor-id="my-shining-beacon-of-hope-open-source-software">My shining beacon of hope: Open-Source Software</h3>
+<ul>
+<li>Definition:
+<ul>
+<li>“Open-source software (OSS) is a type of computer software in which source code is released under a license in which the copyright holder grants users the rights to use, study, change, and distribute the software to anyone and for any purpose.”</li>
+<li>Example of OSS with InVEST from The Natural Capital Project</li>
+</ul></li>
+<li>R is another great example of OSS.
+<ul>
+<li>It’s not just a free, inferior version of STATA. It’s so much more.</li>
+<li>However, R is specific to statistics (though it can be used to do more), and interacting with a large, interdisciplinary research team can involve broader tasks.</li>
+</ul></li>
+<li>Today we’re going to discuss an “open-source scientific computing stack” that expands to a broader set of domains.</li>
+</ul>
+</section>
+<section id="why-python-why-an-extra-language" class="level3">
+<h3 class="anchored" data-anchor-id="why-python-why-an-extra-language">Why Python? Why an extra language?</h3>
+<ul>
+<li>Although econometrics is still heavily centered on R, the Machine Learning community is dominantly focused on Python
+<ul>
+<li>Mostly because all of the key machine learning tools were developed in python: Scikit-Learn, PyTorch, TensorFlow, FastAI, etc.</li>
+</ul></li>
+<li>Python is quickly gaining in usage relative to R, even within econometrics</li>
+</ul>
+<div id="fig-2_4" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/lec2_image4.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.1: <strong>Monthly active users on Github</strong> Source: <a href="https://towardsdatascience.com/data-science-101-is-python-better-than-r-b8f258f57b0f" class="uri">https://towardsdatascience.com/data-science-101-is-python-better-than-r-b8f258f57b0f</a></figcaption>
+</figure>
+</div>
+</section>
+<section id="general-purpose-programming-language" class="level3">
+<h3 class="anchored" data-anchor-id="general-purpose-programming-language">General purpose programming language</h3>
+<ul>
+<li>Python is a General-Purpose programming language beyond just statistics, meaning you could:
+<ul>
+<li>Write your own web server, create a desktop application, make a computer game to test consumer decision making, automate your coffee pot, email your partner automatically when you are stuck at work late making slides for the lecture the next day but have lost track of time, deal with hundreds of thousands of files automatically, launch zoom with an AI-imposter of yourself listening attentively…</li>
+</ul></li>
+<li>Quick example from economics that illustrates this: Agent-Based Simulation</li>
+<li>But perhaps most importantly, “Why not both?”
+<ul>
+<li>You can call R in Python and Python in R, leveraging the benefits of each.</li>
+<li>Our aim in this class is not to make you an expert in Python, but instead make it so you do not “get stuck” when a challenging problem that needs Python arises.</li>
+</ul></li>
+</ul>
+<hr>
+<p><strong>Python is very easy compared to other languages</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page"><em>Python or R</em></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><em>Java</em></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">C++</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">ASSEMBLER X86(DOS, MASM)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false">Hexadecimal representations</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false">Binary representations</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell" data-execution_count="2">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello world!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello world!</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="fig-2_5" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/lec2_image5.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.2: Java HelloWorld</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div id="fig-2_6" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/lec2_image6.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.3: C++ HelloWorld</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<div id="fig-2_7" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/lec2_image7.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.4: DOS HelloWorld</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
+<div id="fig-2_8" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/lec2_image8.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.5: Hexadecimal HelloWorld</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-1-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-6-tab">
+<div id="fig-binary-helloworld" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/lec2_binary_helloworld.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.6: Binary HelloWorld</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-note-on-econometrics-and-causal-inference" class="level3">
+<h3 class="anchored" data-anchor-id="a-note-on-econometrics-and-causal-inference">A note on econometrics and causal inference</h3>
+<ul>
+<li>Before we dive into ML, where does econometrics fit into this landscape?
+<ul>
+<li>We are good at causal inference.</li>
+<li>From Varian 2014: “Instrumental variables, regression discontinuity, difference-in-differences, various forms of natural and designed experiments (Angrist and Krueger 2001).”</li>
+</ul></li>
+<li>Machine Learning is only beginning to explore causality.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="tool-1-git-and-github" class="level1">
+<h1>Tool 1: Git and Github</h1>
+<p><img src="images/lec2_image9.png" id="fig-2_9" class="img-fluid" style="width:100.0%"></p>
+<p><strong>Hopefully you have already created a new account on GitHub</strong></p>
+<ul>
+<li>Went to github.com</li>
+<li>Created your account</li>
+<li>Sent me your username</li>
+</ul>
+<hr>
+<p><strong>Today, we are going to use VS Code to get python code</strong></p>
+</section>
+<section id="tool-2-vs-code" class="level1">
+<h1>Tool 2: VS Code</h1>
+<p><img src="images/lec2_image10.png" id="fig-2_10" class="img-fluid" style="width:100.0%"></p>
+<ul>
+<li>VS Code works for all languages</li>
+<li>Can even be used to write a whole dissertation
+<ul>
+<li>Latex, Overleaf integration, creation of typeset books (we’ll look at these shortly)</li>
+</ul></li>
+<li>Very customizable
+<ul>
+<li>Here’s where I set it to Light+ colorscheme</li>
+</ul></li>
+<li>Has a huge library of “extensions” for different tasks</li>
+</ul>
+<section id="the-command-palate" class="level2">
+<h2 class="anchored" data-anchor-id="the-command-palate">The Command Palate</h2>
+<ul>
+<li>VS Code is easiest to control using the “<code>Command Palate</code>”
+<ul>
+<li>Open it by pressing <code>ctrl-shift-p</code> (MAC: <code>cmd-shift-p</code>)</li>
+</ul></li>
+</ul>
+<p><img src="images/lec2_image11.png" id="fig-2_11" class="img-fluid" style="width:70.0%"></p>
+<ul>
+<li>In this box, you can control nearly everything in VS Code
+<ul>
+<li>For instance, if you type the words “<code>light theme</code>” and select that option, you can change to the light theme like me.</li>
+</ul></li>
+</ul>
+</section>
+<section id="connect-vs-code-to-github" class="level2">
+<h2 class="anchored" data-anchor-id="connect-vs-code-to-github">Connect VS Code to Github</h2>
+<ul>
+<li><p>To do this, we will “<code>Enable Settings Sync</code>”, which will prompt you to Sign in to GitHub.</p></li>
+<li><p>To do this, open the command palate &lt;<code>Ctrl-Shift-P</code>&gt; and type “<code>settings sync</code>”</p></li>
+</ul>
+<p><img src="images/lec2_image12.png" id="fig-2_12" class="img-fluid" style="width:100.0%"></p>
+<ul>
+<li>Select GitHub as the way to sign on
+<ul>
+<li>This will launch a browser window to authenticate your computer.</li>
+<li>Allow this to happen with “<code>Open Visual Studio Code</code>” <img src="images/lec2_image15.png" id="fig-2_15" class="img-fluid" style="width:70.0%"></li>
+</ul></li>
+<li>After login, GitHub will authenticate into VS Code
+<ul>
+<li>Allow it.</li>
+<li>We are now able to push and pull code, clone repositories, and contribute to OSS.</li>
+</ul>
+<img src="images/lec2_image16.png" id="fig-2_16" class="img-fluid" style="width:70.0%"></li>
+</ul>
+</section>
+<section id="before-we-use-git-lets-talk-about-file-structure" class="level2">
+<h2 class="anchored" data-anchor-id="before-we-use-git-lets-talk-about-file-structure">Before we use Git, let’s talk about file structure</h2>
+<ul>
+<li>Make sure you have all the files in google drive.
+<ul>
+<li><strong>Three folders</strong>: <code>Assignments</code>, <code>Data</code> and <code>Readings</code> (red)</li>
+</ul></li>
+<li>In your class folder, make a new folder named <code>“Repos”</code>. This is where we will clone the course repository to.
+<ul>
+<li>If you have your directories arranged exactly this way, it will make “<code>Relative Paths</code>” work easily.</li>
+</ul>
+<img src="images/lec2_image17.png" id="fig-2_17" class="img-fluid" style="width:70.0%"></li>
+</ul>
+<hr>
+<p>Google drive link: <a href="https://drive.google.com/drive/u/1/folders/1oKDfEOqVLVdq93te-6qTegapdKB_dtq3" class="uri">https://drive.google.com/drive/u/1/folders/1oKDfEOqVLVdq93te-6qTegapdKB_dtq3</a></p>
+<hr>
+</section>
+<section id="clone-the-course-repository" class="level2">
+<h2 class="anchored" data-anchor-id="clone-the-course-repository">Clone the course repository</h2>
+<ul>
+<li>Back in VS Code, in the command palate type the word “clone” (use crtl-shift-p)
+<ul>
+<li>This will give you a “Clone from Github” option. Paste in the class repository link <a href="https://github.com/jandrewjohnson/apec_8222_2022_fall" class="uri">https://github.com/jandrewjohnson/apec_8222_2022_fall</a> and hit enter.</li>
+<li><img src="images/lec2_image22.png" id="fig-2_22" class="img-fluid" style="width:70.0%"></li>
+</ul></li>
+<li>It will ask you where you want to put the Repository.
+<ul>
+<li>Make a new folder wherever you store your class content named “Repos”, like in the picture here.</li>
+</ul></li>
+<li>When you hit enter, Git will “clone” (download) the repository, including its entire file history, to your computer.
+<ul>
+<li><img src="images/lec2_image23.png" id="fig-2_23" class="img-fluid" style="width:70.0%"></li>
+<li>It’s hard to explain how awesome Git and version control are, so I won’t explain it. Instead, I’ll just say this is the bedrock of the open-source software revolution.</li>
+</ul></li>
+<li>When it finishes cloning, it’ll ask you if you want to open the repository.
+<ul>
+<li>Say yes!</li>
+</ul></li>
+</ul>
+<p><strong>If all of the above failed, you can at least get the code by manually downloading from github</strong></p>
+<ul>
+<li><a href="https://github.com/jandrewjohnson/apec_8222_2022_fall" class="uri">https://github.com/jandrewjohnson/apec_8222_2022_fall</a></li>
+<li>There is a download Zipfile option in the green code button. <img src="images/lec2_image24.png" id="fig-2_24" class="img-fluid" style="width:70.0%"></li>
+</ul>
+</section>
+</section>
+<section id="tool-3-python" class="level1">
+<h1>Tool 3: Python</h1>
+<ul>
+<li>In VS Code, open the File <code>“Explorer”</code>
+<ul>
+<li>There you will find all the code we just cloned.</li>
+<li>Open <code>00_hello_world.py</code></li>
+</ul></li>
+</ul>
+<p><img src="images/lec2_image25.png" id="fig-2_25" class="img-fluid" style="width:100.0%"></p>
+<p><strong>Hopefully you’ve already used the Extension tab to install the Python Extension</strong></p>
+<ul>
+<li><p>Our first task will be to “<code>Set the Interpreter</code>”</p></li>
+<li><p>This just means point it to the Python environment we made with Mamba</p></li>
+</ul>
+<p><img src="images/lec2_image26.png" id="fig-2_26" class="img-fluid" style="width:100.0%"></p>
+<section id="what-did-we-do-with-mamba" class="level2">
+<h2 class="anchored" data-anchor-id="what-did-we-do-with-mamba">What did we do with Mamba?</h2>
+<ul>
+<li><p>The mamba command downloaded the entire sum of human knowledge and placed it in this folder.</p></li>
+<li><p>Well… not quite the entire sum, but a surprisingly large chunk of it.</p>
+<ul>
+<li>This is where all the required Python packages were installed.</li>
+<li>You could spend a career learning the details of each package, but for now, we’ll just test that it works</li>
+</ul></li>
+</ul>
+<p><img src="images/lec2_image27.png" id="fig-2_27" class="img-fluid" style="width:70.0%"></p>
+</section>
+<section id="select-our-interpreter" class="level2">
+<h2 class="anchored" data-anchor-id="select-our-interpreter">Select our interpreter</h2>
+<ul>
+<li>Easiest way: Run the python file
+<ul>
+<li>Click the <code>Play triangle</code>. <img src="images/lec2_interpreter.png" id="fig-2_interpreter" class="img-fluid" style="width:70.0%"></li>
+</ul></li>
+<li>This will prompt you to Select a Python Interpreter.
+<ul>
+<li>Click that, and then find the <code>8222env1</code> environment you created with Mamba <img src="images/lec2_image28.png" id="fig-2_28" class="img-fluid" style="width:70.0%"> <img src="images/lec2_image29.png" id="fig-2_29" class="img-fluid" style="width:70.0%"></li>
+</ul></li>
+</ul>
+<hr>
+<ul>
+<li><em>There are multiple (potentially confusing) ways to set the interpreter</em>.
+<ul>
+<li><p>If you have a <strong>python (.py)</strong> file open, you can click the <strong>bottom-right yellow bar</strong> <img src="images/lec2_image32.png" id="fig-2_32" class="img-fluid" style="width:70.0%"></p></li>
+<li><p>If you have a <strong>Jupyter notebook</strong> open, you can select it in the upper-right of the notebook <img src="images/lec2_image33.png" id="fig-2_33" class="img-fluid" style="width:70.0%"></p></li>
+<li><p>If nothing is open, you can use the command-palate (<code>ctrl-shift-p</code>) and search for “<code>python select interpreter</code>” <img src="images/lec2_image34.png" id="fig-2_34" class="img-fluid" style="width:70.0%"></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="jupyter-notebooks" class="level2">
+<h2 class="anchored" data-anchor-id="jupyter-notebooks">Jupyter notebooks</h2>
+<ul>
+<li>Open up VS Code and use the explorer tab (on the left) to open <code>01_jupyter_intro.ipynb</code> in the lecture_notebooks folder</li>
+<li>For the rest of this lecture, we’ll be using only VS Code <img src="images/lec2_image35.png" id="fig-2_35" class="img-fluid" style="width:70.0%"></li>
+</ul>
+</section>
+</section>
+<section id="appendix-more-vs-code-settings" class="level1">
+<h1>Appendix: More VS Code Settings</h1>
+<section id="about-vs-workspaces-and-folders" class="level2">
+<h2 class="anchored" data-anchor-id="about-vs-workspaces-and-folders">About VS “Workspaces” and “Folders”</h2>
+<ul>
+<li>By starting <code>VS Code</code> in a folder, that folder becomes your “<code>workspace</code>”. VS Code stores settings that are specific to that workspace in <code>.vscode/settings.json</code>, which are separate from user settings that are stored globally.</li>
+<li>I have created some versions of these settings files in the class repository for you to use.</li>
+<li>If you set the class repository as your VS Code folder, it will automatically use these settings. Alternately, you can run VS Code through the operating system UI, then use <code>File &gt; Open Folder</code> to open the project folder</li>
+</ul>
+</section>
+<section id="open-up-settings" class="level2">
+<h2 class="anchored" data-anchor-id="open-up-settings">Open up settings</h2>
+<ul>
+<li><p><code>File menu &gt; Preferences &gt; Settings</code></p></li>
+<li><p><code>Or &lt;CTRL-,&gt;</code></p></li>
+</ul>
+<p><img src="images/lec2_image36.png" id="fig-2_36" class="img-fluid" style="width:70.0%"></p>
+</section>
+<section id="settings-i-like-to-play-with" class="level2">
+<h2 class="anchored" data-anchor-id="settings-i-like-to-play-with">Settings I like to play with</h2>
+<p>When I debug (we’ll talk about this), I like to have the values of variables printed onto the screen as I step through my code.</p>
+<hr>
+<p><strong>That annoying lightbulb…</strong></p>
+<ul>
+<li>Get rid of it in settings if it annoys you.</li>
+<li>Here I didn’t even disguise the fact that this is from <code>StackOverflow</code>.
+<ul>
+<li>I refuse to devote memory to such things and have outsourced this type of storage to external sources.</li>
+<li>Real programmers <code>Copy-Paste</code>.</li>
+</ul></li>
+<li>The lightbulb was an icon to the “<code>Quick Fix</code>” option for code mistakes. You can do this instead by putting your cursor in a word and typing <code>&lt;ctrl-.&gt;</code></li>
+</ul>
+<p><img src="images/lec2_image37.png" id="fig-2_37" class="img-fluid" style="width:70.0%"></p>
+<hr>
+</section>
+</section>
+<section id="appendix-behind-the-scene-of-mamba-what-that-all-really-did" class="level1">
+<h1>Appendix: Behind the scene of Mamba: What that all really did</h1>
+<section id="important-note-file-organization-matters" class="level2">
+<h2 class="anchored" data-anchor-id="important-note-file-organization-matters">Important note: File organization matters</h2>
+<p>Here’s how I set things up.</p>
+<p><img src="images/lec2_image38.png" id="fig-2_38" class="img-fluid" style="width:70.0%"></p>
+<ul>
+<li><p>It may be useful for you to set things up similarly, but it’s up to you.</p></li>
+<li><p>First off, if I’m working on a some arbitrary computer (or cloud service, or Docker image, or on my Steam Deck, etc), I choose to save everything in my “<code>User directory</code>”. This helps it be similar across operating systems.</p></li>
+<li><p>But I hate all the clutter in the User dir put here automatically by other programs, so I put everything I care about in a <code>“Files”</code> directory.</p></li>
+</ul>
+</section>
+<section id="cloud-integration" class="level2">
+<h2 class="anchored" data-anchor-id="cloud-integration">Cloud integration</h2>
+<p><img src="images/lec2_image39.png" id="fig-2_39" class="img-fluid" style="width:70.0%"></p>
+<ul>
+<li><p>If I’m on my own machine, I have an identically organized “File” directory in my google drive.</p></li>
+<li><p>Here too it’s always full of clutter automatically put there by others.</p></li>
+<li><p>This setup lets you work seamlessly across many computers</p></li>
+</ul>
+<hr>
+<p><strong>However you choose to set up your folders, please configure your directory for this course as follows</strong></p>
+<p><img src="images/lec2_image40.png" id="fig-2_40" class="img-fluid" style="width:70.0%"></p>
+<ul>
+<li>You can download the default configuration of this in the courses’ google drive page.</li>
+<li>Important notes:
+<ul>
+<li>We will use <code>Git</code> to put our code in the <code>Repos</code> directory.</li>
+<li>The <code>Data</code> directory will have data used in assignments and such.</li>
+<li>If you have exactly this file setup, it will be easy to create correct “<code>relative paths</code>” later on.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="here-is-where-mamba-installed-everything" class="level2">
+<h2 class="anchored" data-anchor-id="here-is-where-mamba-installed-everything">Here is where Mamba installed everything</h2>
+<p><strong>Look we’ve got Python!</strong></p>
+<p><img src="images/lec2_image41.png" id="fig-2_41" class="img-fluid" style="width:70.0%"></p>
+<p><strong>And here’s our new environment!</strong></p>
+<p><img src="images/lec2_image42.png" id="fig-2_42" class="img-fluid" style="width:70.0%"></p>
+<p>When we selected the interpreter in VS Code, all we really did it point it to that folder</p>
+</section>
+<section id="optional-path-step" class="level2">
+<h2 class="anchored" data-anchor-id="optional-path-step">Optional <code>PATH</code> step</h2>
+<ul>
+<li><p>If you didn’t select to “<code>Add Mambaforge to my PATH environment Variable</code>”, you can set it with the following <code>(WINDOWS ONLY) command</code>.’</p></li>
+<li><p>Where you replace <code>User</code> with <code>your own user directory</code>.</p></li>
+</ul>
+<p><code>SETX PATH "%PATH%;C:\Users\User\mambaforge;C:\Users\User\mambaforge;"</code></p>
+</section>
+</section>
+<section id="appendix-more-details-about-git-and-version-control" class="level1">
+<h1>Appendix: More details about Git and Version Control</h1>
+<section id="git-details" class="level2">
+<h2 class="anchored" data-anchor-id="git-details">Git Details</h2>
+<p><img src="images/lec2_image43.png" id="fig-2_43" class="img-fluid" style="width:70.0%"></p>
+</section>
+<section id="creating-new-repos" class="level2">
+<h2 class="anchored" data-anchor-id="creating-new-repos">Creating new repos</h2>
+<p><img src="images/lec2_image44.png" id="fig-2_44" class="img-fluid" style="width:70.0%"></p>
+<ul>
+<li><p>VSCode has the “<code>Publish to Github</code>” option to create a repository on Github when there is no existing git repository.</p></li>
+<li><p>Create your project folder locally and add your <code>README.md</code> file.</p></li>
+</ul>
+</section>
+<section id="git-from-the-ground-up-using-the-command-line" class="level2">
+<h2 class="anchored" data-anchor-id="git-from-the-ground-up-using-the-command-line">Git from the ground up (using the command line)</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div id="fig-folderwithyourcode" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/lec2_folderwithyourcode.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;10.1: Git Folder with your Code</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:60%;">
+<ul>
+<li>Initial state:
+<ul>
+<li>If your hard drive dies, you’re in major trouble</li>
+<li>Perhaps you’ve backed up your files, but how long ago was that?</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="git-from-the-ground-up" class="level2">
+<h2 class="anchored" data-anchor-id="git-from-the-ground-up">Git from the ground up</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div id="fig-gitfromground" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/lec2_gitfromground.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;10.2: Git from the ground up (Step 1)</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:60%;">
+<ul>
+<li><strong>Step 1</strong>: Initialize your folder as a Git Repository
+<ul>
+<li>At this point, your files are now “version controlled” and have a full history saved, but only for you and only on your local machine (still quite useful)</li>
+</ul></li>
+<li>At this point, you might go ahead and make a new file.</li>
+</ul>
+</div>
+</div>
+<hr>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div id="fig-gitfromground2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/lec2_gitfromground2.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;10.3: Git from the ground up (Step 2)</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:60%;">
+<ul>
+<li><strong>Step 2</strong>: Add files to the repo
+<ul>
+<li>First “add” files to the repository</li>
+<li>Then “commit” them to the repository</li>
+</ul></li>
+<li><strong>Command</strong>:
+<ul>
+<li><p><code>git add new_file.py</code></p></li>
+<li><p><code>git commit –m “I added the initial files”</code></p></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<hr>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div id="fig-gitfromground3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/lec2_gitfromground3.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;10.4: Git from the ground up (Step 3)</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:60%;">
+<ul>
+<li><strong>Step 3</strong>: Create a “remote” repository
+<ul>
+<li>On <em>github.com</em>, create a new repository</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="fig-lec2_45" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/lec2_image45.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;10.5: GitHub Repository Demo</figcaption>
+</figure>
+</div>
+<hr>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div id="fig-gitfromground4" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/lec2_gitfromground4.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;10.6: Git from the ground up (Step 4)</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:60%;">
+<ul>
+<li><strong>Step 4</strong>: Connect your local repository to the remote</li>
+<li>Command:
+<ul>
+<li><code>git remote add origin https://github.com/user/repo.git</code>
+<ul>
+<li><code>Origin</code> is the standard name that Git gives to your primary remote repository.</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<hr>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div id="fig-gitfromground5" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/lec2_gitfromground5.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;10.7: Git from the ground up (Step 5)</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:60%;">
+<ul>
+<li><p><strong>Step 5</strong>: <code>Push</code> your changed local code to the remote.</p></li>
+<li><p>Command:</p>
+<ul>
+<li><code>git push</code></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<hr>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div id="fig-gitfromground6" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/lec2_gitfromground6.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;10.8: Git from the ground up (Step 6)</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:60%;">
+<ul>
+<li><strong>Step 6</strong>: Add new contributor via GitHub.com
+<ul>
+<li>Tell them to <code>clone</code> your repo</li>
+</ul></li>
+<li>Command:
+<ul>
+<li><code>git clone https://github.com/user/repo.git</code></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<hr>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div id="fig-gitfromground7" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/lec2_gitfromground7.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;10.9: Git from the ground up (Step 7)</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:60%;">
+<ul>
+<li><strong>Step 7</strong>: Suppose they change a file.
+<ul>
+<li>They would then add, commit and push the new file.</li>
+<li>But now your files are different!</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<hr>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div id="fig-gitfromground8" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/lec2_gitfromground8.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;10.10: Git from the ground up (Step 8)</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:60%;">
+<ul>
+<li><strong>Step 8</strong>: BEFORE YOU START CODING, you must pull their changes.
+<ul>
+<li>If you didn’t change the file, you’re all good.</li>
+<li>If you did, you will have to “<code>merge</code>” the files, choosing line-by-line which one to accept.</li>
+</ul></li>
+<li>Command:
+<ul>
+<li><code>git pull</code></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="using-git-from-the-command-line" class="level2">
+<h2 class="anchored" data-anchor-id="using-git-from-the-command-line">Using Git from the command line</h2>
+<p><img src="images/lec2_image46.png" id="fig-2_46" class="img-fluid" style="width:70.0%"></p>
+<p><strong>Navigate to the folder’s repository, right click on the directory, select <code>Git Bash</code> Here</strong></p>
+<hr>
+<p><img src="images/lec2_image47.png" id="fig-2_47" class="img-fluid" style="width:70.0%"></p>
+<ul>
+<li>For a first command, just type “git”</li>
+<li>Now you’re ready to implement the commands above. For a reminder, they were:</li>
+</ul>
+<div class="cell" data-execution_count="3">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>git init</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>git add new_file.py</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>git commit –m “I added the initial files”</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>git remote add origin https:<span class="op">//</span>github.com<span class="op">/</span>user<span class="op">/</span>repo.git</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>git push</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>git pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="optional-version-control-graphical-user-interface-installation" class="level2">
+<h2 class="anchored" data-anchor-id="optional-version-control-graphical-user-interface-installation">Optional: Version Control Graphical User Interface Installation</h2>
+<ul>
+<li>Download GitHub Desktop from desktop.github.com</li>
+<li>When you are installing this, it will prompt you to sign in to GitHub or create a new account. This is a VERY important account. If you do not have an account, create one, though I suggest thinking carefully about the username/email (because if you’re like me, inertia and network effects guarantee this will be your GitHub name for decades)</li>
+</ul>
+</section>
+<section id="breakout-group-activity" class="level2">
+<h2 class="anchored" data-anchor-id="breakout-group-activity">BREAKOUT GROUP ACTIVITY</h2>
+<ul>
+<li><em>Goal</em>: have 1 person create a new repository on github and have everybody clone the repository to their local computer</li>
+<li><em>Bonus goal</em>, if you finish the above, have someone make a change, push it, then have everyone pull it.</li>
+</ul>
+</section>
+</section>
+<section id="other-toolsapproaches" class="level1">
+<h1>Other tools/approaches</h1>
+<ul>
+<li><p>Install Pycharm PROFESSIONAL edition (not community edition)</p>
+<ul>
+<li><a href="https://www.jetbrains.com/pycharm/download/#section=windows" class="uri">https://www.jetbrains.com/pycharm/download/#section=windows</a></li>
+<li>Just use default installation options given to you.</li>
+<li>The first time you launch it, you will have the option to install the R plugin. I recommend doing this.</li>
+</ul></li>
+<li><p>When it first opens, it will ask you to set a “Project” location, which is really just a folder. Don’t worry about this for now.</p></li>
+<li><p>Fun tidbit: Why write on just 1 line at a time when you can write on many? Pycharm lets you write on multiple lines at the same time and smartly paste in a matching list of values (I’ll showcase this in class).</p></li>
+</ul>
+</section>
+<section id="getting-python-with-anaconda" class="level1">
+<h1>Getting Python with Anaconda</h1>
+<ul>
+<li><code>Anaconda</code> is the basis of Mamba, which is just a faster and more convenient option than Anaconda
+<ul>
+<li>But, <code>Anaconda</code> is probably the most common approach, so I want to mention it.</li>
+</ul></li>
+<li>You can download the Anaconda distribution of Python at <a href="https://www.anaconda.com/products/individual" class="uri">https://www.anaconda.com/products/individual</a></li>
+<li>Install with default options.
+<ul>
+<li>Anaconda is a HUGE tool with many things built in</li>
+<li>Some prefer the minimalist Miniconda</li>
+</ul></li>
+</ul>
+<hr>
+<p><strong>The full installation includes Anaconda Navigator, packed full of good tools</strong></p>
+<p><img src="images/lec2_image48.png" id="fig-2_48" class="img-fluid" style="width:70.0%"></p>
+<ul>
+<li>Anaconda is a “distribution” of python that also includes a ton of community-built modules and a handy way for managing them.</li>
+<li>Launch Anaconda Navigator and you will see a TON of very powerful tools</li>
+</ul>
+<p><img src="images/lec2_image49.png" id="fig-2_49" class="img-fluid" style="width:70.0%"></p>
+<ul>
+<li>If you haven’t already, launch the Anaconda Navigator</li>
+<li>From here, launch CMD.exe prompt (or mac equivalent)</li>
+<li>For mac, just launch Terminal.</li>
+</ul>
+<p><strong>Protip for context</strong>: This will launch a standard CMD prompt, but with Conda activated. You could do the same by launching a standard CMD.exe, using it to launch launching conda.exe, then initiating the environment with conda init. This is similar to what we did with the Miniforge prompt.</p>
+<section id="setting-the-interpreter-with-pycharms" class="level2">
+<h2 class="anchored" data-anchor-id="setting-the-interpreter-with-pycharms">Setting the interpreter with PyCharms</h2>
+<ul>
+<li>Pycharms has you set your project root directory</li>
+<li>Set this to the class repository <img src="images/lec2_image50.png" id="fig-2_50" class="img-fluid" style="width:70.0%"></li>
+<li>This will create a new Python installation specific (may take a while to create all the files) <img src="images/lec2_image51.png" id="fig-2_51" class="img-fluid" style="width:60.0%"> <img src="images/lec2_image52.png" id="fig-2_52" class="img-fluid" style="width:60.0%"></li>
+</ul>
+</section>
+<section id="create-a-new-environment-using-conda" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-new-environment-using-conda">Create a new environment using Conda</h2>
+<p><img src="images/lec2_image53.png" id="fig-2_53" class="img-fluid" style="width:60.0%"></p>
+<ul>
+<li>If you haven’t created a project before, this box will pop up where you can select New Environment Using Conda</li>
+<li>Hopefully it will find where you installed Anaconda automatically, but if not, you will have to put this in.</li>
+</ul>
+<hr>
+<p><strong>Now we have working IDE capable of software development</strong></p>
+<ul>
+<li>Navigate to your <code>03_01_hello_world.py</code></li>
+<li>In the run menu, select <code>Run</code>, or <code>Ctrl-Shift-F10</code>.</li>
+<li>The new window below is a command prompt calling python on your script file.</li>
+</ul>
+<p><img src="images/lec2_image54.png" id="fig-2_54" class="img-fluid" style="width:60.0%"></p>
+</section>
+<section id="installing-packages" class="level2">
+<h2 class="anchored" data-anchor-id="installing-packages">Installing Packages</h2>
+<ul>
+<li>You can see your new environment in Anaconda Navigator</li>
+<li>Select the environment you created in your Project directory</li>
+<li>Select it, then click channels and add “conda-forge”</li>
+<li>Install Numpy and then Matplotlib by searching for them (be sure to select uninstalled when you’re searching)</li>
+</ul>
+<p><img src="images/lec2_image55.png" id="fig-2_55" class="img-fluid" style="width:60.0%"></p>
+<p><img src="images/lec2_image56.png" id="fig-2_56" class="img-fluid" style="width:60.0%"></p>
+</section>
+<section id="running-python-on-the-command-line" class="level2">
+<h2 class="anchored" data-anchor-id="running-python-on-the-command-line">Running Python on the command line</h2>
+<p><img src="images/lec2_image57.png" id="fig-2_57" class="img-fluid" style="width:60.0%"></p>
+<p>After you’ve launched the<code>CMD prompt</code> from <code>Anaconda Navigator</code>, just type <code>python</code>. You’ll now have a <code>&gt;&gt;&gt;</code> on the command line, indicating you are entering python code</p>
+<p>Now we have basic calculator functionality. You can get back to a normal CMD prompt using the python function <code>quit()</code></p>
+<p><img src="images/lec2_image58.png" id="fig-2_58" class="img-fluid" style="width:60.0%"></p>
+</section>
+</section>
+<section id="additional-resources" class="level1">
+<h1>Additional Resources</h1>
+<ul>
+<li>Earth Lab: <a href="https://www.earthdatascience.org/" class="uri">https://www.earthdatascience.org/</a></li>
+<li>Actual textbook intermediate
+<ul>
+<li><a href="https://github.com/earthlab/earth-analytics-intermediate-earth-data-science-textbook" class="uri">https://github.com/earthlab/earth-analytics-intermediate-earth-data-science-textbook</a></li>
+</ul></li>
+<li>Into textbook
+<ul>
+<li><a href="https://github.com/earthlab/earth-analytics-intro-to-earth-data-science-textbook" class="uri">https://github.com/earthlab/earth-analytics-intro-to-earth-data-science-textbook</a></li>
+</ul></li>
+<li>Python course
+<ul>
+<li><a href="https://github.com/earthlab/earth-analytics-python-course" class="uri">https://github.com/earthlab/earth-analytics-python-course</a></li>
+</ul></li>
+<li>Python Bootcamp
+<ul>
+<li><a href="https://github.com/earthlab/earth-analytics-bootcamp-course" class="uri">https://github.com/earthlab/earth-analytics-bootcamp-course</a></li>
+</ul></li>
+<li>Environment setup
+<ul>
+<li><a href="https://github.com/earthlab/earth-analytics-setup-python-env-workshop" class="uri">https://github.com/earthlab/earth-analytics-setup-python-env-workshop</a></li>
+</ul></li>
+<li>Plotting textbook
+<ul>
+<li><a href="https://github.com/earthlab/earth-analytics-scientists-guide-to-plotting-data-in-python-textbook" class="uri">https://github.com/earthlab/earth-analytics-scientists-guide-to-plotting-data-in-python-textbook</a></li>
+</ul></li>
+<li>GIS textbook
+<ul>
+<li><a href="https://github.com/earthlab/earth-analytics-open-gis-python-workshop" class="uri">https://github.com/earthlab/earth-analytics-open-gis-python-workshop</a></li>
+</ul></li>
+<li>Open science textbook
+<ul>
+<li><a href="https://github.com/earthlab/earth-analytics-open-science-workshop" class="uri">https://github.com/earthlab/earth-analytics-open-science-workshop</a></li>
+</ul></li>
+<li>Climate 101 workbooks
+<ul>
+<li><a href="https://github.com/earthlab/climate-data-101" class="uri">https://github.com/earthlab/climate-data-101</a></li>
+</ul></li>
+<li>Dockerfiles
+<ul>
+<li><a href="https://github.com/earthlab/dockerfiles" class="uri">https://github.com/earthlab/dockerfiles</a></li>
+</ul></li>
+<li>R integration
+<ul>
+<li><a href="https://github.com/earthlab/earth-analytics-tidyverse-clean-code-r-workshop" class="uri">https://github.com/earthlab/earth-analytics-tidyverse-clean-code-r-workshop</a></li>
+</ul></li>
+</ul>
+<section id="spatial-data-viewer-installation" class="level2">
+<h2 class="anchored" data-anchor-id="spatial-data-viewer-installation">Spatial Data Viewer Installation</h2>
+<ul>
+<li>Install QGIS from: <a href="https://qgis.org/en/site/forusers/download.html" class="uri">https://qgis.org/en/site/forusers/download.html</a>
+<ul>
+<li>NOTE: I recommend getting QGIS Standalone Installer 64bit</li>
+</ul></li>
+<li>Fun tidbit: QGIS used to be an inferior free version of ArcGIS but now challenges (and in my opinion surpasses) it in most key metrics.</li>
+</ul>
+</section>
+<section id="colab" class="level2">
+<h2 class="anchored" data-anchor-id="colab">Colab?</h2>
+<ul>
+<li><a href="https://colab.research.google.com/" class="uri">https://colab.research.google.com/</a></li>
+<li>Guide
+<ul>
+<li><a href="https://web.eecs.umich.edu/~justincj/teaching/eecs442/WI2021/colab.html" class="uri">https://web.eecs.umich.edu/~justincj/teaching/eecs442/WI2021/colab.html</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="popularity-matters" class="level2">
+<h2 class="anchored" data-anchor-id="popularity-matters">Popularity matters</h2>
+<p><img src="images/lec2_image59.png" id="fig-2_59" class="img-fluid" style="width:60.0%"></p>
+<ul>
+<li>IDE usage over time: VS Code is winning.</li>
+</ul>
+<p><img src="images/lec2_image60.png" id="fig-2_60" class="img-fluid" style="width:60.0%"></p>
+<ul>
+<li>Language usage over time: Python is winning.</li>
+</ul>
+</section>
+<section id="the-original-tools-the-command-line" class="level2">
+<h2 class="anchored" data-anchor-id="the-original-tools-the-command-line">The original tool(s): The Command Line</h2>
+<p><img src="images/lec2_originaltools.png" id="fig-originaltools" class="img-fluid" style="width:60.0%"></p>
+</section>
+</section>
+<section id="in-class-exercise-1.1-python-on-the-command-line" class="level1">
+<h1>In Class Exercise 1.1: Python on the command line</h1>
+<ul>
+<li>Run Python the “the real way”</li>
+<li>Open your <code>Miniforge Prompt</code></li>
+<li>Activate the environment you created</li>
+<li>Launch python by just typing “python”</li>
+<li>Write the canonical “Hello World!” using the command</li>
+<li><code>print(“Hello World!”)</code></li>
+<li>You’ll notice you’re using Python because of the <code>&gt;&gt;&gt;</code> at the beginning of each line.</li>
+<li>To get back to a “normal” command prompt, type the command</li>
+<li><code>quit()</code></li>
+<li>Celebrate!</li>
+</ul>
+<p><img src="images/lec2_image65.png" id="fig-2_65" class="img-fluid" style="width:60.0%"></p>
+</section>
+<section id="basics-of-python" class="level1">
+<h1>Basics of Python</h1>
+<section id="different-ways-of-using-python" class="level2">
+<h2 class="anchored" data-anchor-id="different-ways-of-using-python">Different ways of using Python</h2>
+<ol type="1">
+<li>Type Python code directly in the command line (what we just did)</li>
+<li>Use the command line to tell Python to run a .py file Common stumbling block: you have to make sure your current working directory in folder where your code is In the Command Prompt pictured, I ran a .py file and it outputted straight back</li>
+</ol>
+<p><img src="images/lec2_image66.png" id="fig-2_66" class="img-fluid" style="width:60.0%"></p>
+<p><em>Run in a local Integrated Development Environment</em></p>
+<ol start="4" type="1">
+<li>Run on a remote computer you control (via SSH or some other protocol)</li>
+<li>Run a cloud compute server (this assumes you could do the Mambaforge steps, or something similar, on the cloud Amazon AWS, Google Cloud, and Microsoft Azure are the three big ones</li>
+<li>Run in a “containerized” version using Docker, Kubernetes, etc.</li>
+<li>Launch a python script on a high-performance computing (HPC) cluster Sometimes, they will even give you the ability to run a jupyter notebook!</li>
+<li>Browser/Git-based IDE envioronments (Google Colab)</li>
+</ol>
+</section>
+</section>
+<section id="other-reseources-still-to-pull-in" class="level1">
+<h1>Other reseources still to pull in</h1>
+<ul>
+<li><a href="https://www.tomasbeuzen.com/python-programming-for-data-science/README.html" class="uri">https://www.tomasbeuzen.com/python-programming-for-data-science/README.html</a>
+<ul>
+<li><a href="https://github.com/TomasBeuzen/python-programming-for-data-science" class="uri">https://github.com/TomasBeuzen/python-programming-for-data-science</a></li>
+</ul></li>
+<li><a href="https://aeturrell.github.io/coding-for-economists/intro.html" class="uri">https://aeturrell.github.io/coding-for-economists/intro.html</a>
+<ul>
+<li><a href="https://github.com/aeturrell/coding-for-economists" class="uri">https://github.com/aeturrell/coding-for-economists</a></li>
+</ul></li>
+<li><a href="https://python-programming.quantecon.org/intro.html" class="uri">https://python-programming.quantecon.org/intro.html</a></li>
+<li><a href="https://python.quantecon.org/intro.html" class="uri">https://python.quantecon.org/intro.html</a>
+<ul>
+<li><a href="https://github.com/QuantEcon/lecture-python.notebooks" class="uri">https://github.com/QuantEcon/lecture-python.notebooks</a></li>
+</ul></li>
+<li><a href="https://python-advanced.quantecon.org/intro.html" class="uri">https://python-advanced.quantecon.org/intro.html</a></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../Introduction/introduction_what-is-big-data-and-why-does-it-matter.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is Big Data and Why Does it Matter</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../Python_Introduction/python_for_big_spatial_data.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Python for Big, Spatial Data</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
